@@ -53,6 +53,7 @@
     <UnityVersion>2019.4.30f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Prototyping\TileController.cs" />
     <Compile Include="Assets\Prototyping\testScript.cs" />
   </ItemGroup>
   <ItemGroup>
