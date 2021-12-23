@@ -53,7 +53,8 @@ public class GhosBlinky : MonoBehaviour
 
         //TESTING
         //set target tiles for chase and scatter
-        chaseTile = new Vector3(0f,0f, 0f);
+       // chaseTile = new Vector3(0f,0f, 0f);
+        chaseTile = PacMan.transform.position;
         scatterTile = new Vector3(0f,0f, 0f);
     }
 
@@ -68,6 +69,7 @@ public class GhosBlinky : MonoBehaviour
                 //if at center of tile and current tile has more than 2 gates, pick the one that has lowest Euclidian distance to target tile
                 if (Vector3.Distance(rb.transform.position, currentTile.transform.position) <= snapTile && newTile)
                 {
+                    chaseTile = PacMan.transform.position;
                     //remove opposite direction from available gates
                     //int oppDir = (int)OppositeDirection(currentDirection);
                     //tileAvailableDirs[oppDir] = false;
@@ -125,28 +127,28 @@ public class GhosBlinky : MonoBehaviour
                         //        directionInt = h;
                         //}
 
-                        //float minDist = float.MaxValue;
-                        //int minDirection = 0;
-                        //for (int i = 0; i < 4; i++)
-                        //{
-                        //    if (tileAvailableDirs[i] == false)
-                        //        targetDistances[i] = 0f;
+                        float minDist = float.MaxValue;
+                        int minDirection = 0;
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (tileAvailableDirs[i] == false)
+                                targetDistances[i] = 0f;
 
-                        //    if (targetDistances[i] < minDist && targetDistances[i] > 0f)
-                        //    {
-                        //        minDist = targetDistances[i];
-                        //        minDirection = i;
-                        //    }
+                            if (targetDistances[i] < minDist && targetDistances[i] > 0f)
+                            {
+                                minDist = targetDistances[i];
+                                minDirection = i;
+                            }
                                 
-                        //}
+                        }
 
                         ////center on tile then change direction
-                        //if (turnTile != rb.transform.position)
-                        //{
-                        //    turnTile = rb.transform.position;
-                        //    rb.transform.position = currentTile.transform.position;
-                        //    ChangeDirection((Direction)minDirection);
-                        //}
+                        if (turnTile != rb.transform.position)
+                        {
+                            turnTile = rb.transform.position;
+                            rb.transform.position = currentTile.transform.position;
+                            ChangeDirection((Direction)minDirection);
+                        }
                         
                         //newTile = false;
                     }

@@ -8106,7 +8106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GhostSpeed: 1.8
-  PacMan: {fileID: 0}
+  PacMan: {fileID: 2002469261}
 --- !u!50 &829604955
 Rigidbody2D:
   serializedVersion: 4
