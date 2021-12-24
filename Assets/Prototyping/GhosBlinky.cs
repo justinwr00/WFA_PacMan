@@ -17,7 +17,7 @@ public class GhosBlinky : MonoBehaviour
     public float GhostSpeed = 1.8f;
     bool[] tileAvailableDirs;
     float[] targetDistances;
-    public GameObject PacMan;                               //pac man player object that this ghost will chase
+    public GameObject PacMan, ScatterTarget;                               //pac man player object that this ghost will chase
 
     enum Direction
     {
@@ -55,7 +55,7 @@ public class GhosBlinky : MonoBehaviour
         //set target tiles for chase and scatter
        // chaseTile = new Vector3(0f,0f, 0f);
         chaseTile = PacMan.transform.position;
-        scatterTile = new Vector3(0f,0f, 0f);
+        scatterTile = ScatterTarget.transform.position;
     }
 
     // Update is called once per frame
@@ -100,32 +100,7 @@ public class GhosBlinky : MonoBehaviour
                         targetDistances[2] = Vector3.Distance(chaseTile, new Vector3(currentTile.transform.position.x - 1, currentTile.transform.position.y, 0f));
                         targetDistances[3] = Vector3.Distance(chaseTile, new Vector3(currentTile.transform.position.x + 1, currentTile.transform.position.y, 0f));
 
-                        //bool minFound = false;
-                        //float minDistance = 0f;
 
-                        //for (int k = 0; k < 4; k++)
-                        //{
-                        //    if (tileAvailableDirs[k] == true)
-                        //    {
-                        //        if (minFound)
-                        //        {
-                        //            if (targetDistances[k] < minDistance)
-                        //                minDistance = targetDistances[k];
-                        //        }
-                        //        else
-                        //        {
-                        //            minDistance = targetDistances[k];
-                        //            minFound = true;
-                        //        }
-                        //    }
-                        //}
-
-                        //int directionInt = 0;
-                        //for (int h = 0; h < 4; h++)
-                        //{
-                        //    if (targetDistances[h] == minDistance)
-                        //        directionInt = h;
-                        //}
 
                         float minDist = float.MaxValue;
                         int minDirection = 0;
